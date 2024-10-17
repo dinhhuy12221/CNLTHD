@@ -4,6 +4,10 @@
     width: fit-content;
     border-radius: 10%;
     padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .display {
     border-radius: 10px;
@@ -14,6 +18,14 @@
     font-size: 40px;
     background-color: white;
 }
+
+.keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 20px;
+    gap: 5px;
+}
+
 .key {
     font-size: 1.5rem;
     font-weight: bold;

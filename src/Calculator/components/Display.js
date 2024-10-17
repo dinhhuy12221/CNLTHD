@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Key from './Key'
 
 export default function Display() {
 
   const [values, setValues] = useState('');
+  const errorRef = useRef(false);
 
   const handleClick = e => {
     const value = e.target.value;
@@ -12,21 +13,26 @@ export default function Display() {
 
   function update(value) {
     try {
-        let tempValues = values;
+    if (errorRef.current === true) {
+      setValues(v => v = '');
+      errorRef.current = false;
+    }
+      let tempValues = values;
     if (value === 'DEL') {
-        tempValues = tempValues.substring(0, tempValues.length - 1);
+      tempValues = tempValues.substring(0, tempValues.length - 1);
     } else if (value === "AC") {
       tempValues = '';
     }
-     else if (value === '=') {
-        tempValues = eval(values);
-      } 
-      else {
-        tempValues += value;
-      }
-        setValues(v => v = tempValues);
-    }catch (error) {
+    else if (value === '=') {
+      tempValues = eval(values);
+    } 
+    else {
+      tempValues += value;
+    }
+    setValues(v => v = tempValues);
+    } catch (error) {
         console.log(error);
+        errorRef.current = true;
     }
   }
 
@@ -40,26 +46,18 @@ export default function Display() {
         <Key value={8} handleClick={(e) => handleClick(e)}/>
         <Key value={9} handleClick={(e) => handleClick(e)}/>
         <Key value={'+'} handleClick={(e) => handleClick(e)}/>
-      </div>
-      <div className='keys'>
         <Key value={4} handleClick={(e) => handleClick(e)}/>
         <Key value={5} handleClick={(e) => handleClick(e)}/>
         <Key value={6} handleClick={(e) => handleClick(e)}/>
         <Key value='-' handleClick={(e) => handleClick(e)}/>
-      </div>
-      <div className='keys'>
         <Key value={1} handleClick={(e) => handleClick(e)}/>
         <Key value={2} handleClick={(e) => handleClick(e)}/>
         <Key value={3} handleClick={(e) => handleClick(e)}/>
         <Key value='*' handleClick={(e) => handleClick(e)}/>
-      </div>
-      <div className='keys'>
         <Key value='DEL' handleClick={(e) => handleClick(e)}/>
         <Key value={0} handleClick={(e) => handleClick(e)}/>
         <Key value='=' handleClick={(e) => handleClick(e)}/>
         <Key value='/' handleClick={(e) => handleClick(e)}/>
-      </div>
-      <div className='keys'>
         <Key value='AC' handleClick={e => handleClick(e)}></Key>
       </div>
     </>
