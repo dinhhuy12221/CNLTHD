@@ -1,0 +1,45 @@
+.game {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.board-row {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: aliceblue;
+    border: 1px solid black;
+}
+
+.square-X {
+    color: red;
+}
+.square-O {
+    color: blue;
+}
+
+.status {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.game-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: stretch;
+    ol {
+        list-style-type: none;
+        font-size: 1.3rem;
+        font-weight: bold;
+    }
+}

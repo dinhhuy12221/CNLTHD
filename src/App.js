@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import Calculator from './Calculator/components/Calculator'
+import Game from './Tic-Tac-Toe/components/Game'
+import ToDoList from './Todo-List/ToDoList'
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <Header />
+    <div className='main'>
+      <BrowserRouter>
+        <Routes>
+          <Route path='tictactoe' element={<Game/>}></Route>
+          <Route path='calculator' element={<Calculator/>}></Route>
+          <Route path='todolist' element={<ToDoList/>}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
+    </>
+  );
+}
+
+function Header() {
+
+  return(
+    <head className='header'>
+      <a href='tictactoe' target=''>Tic-Tac-Toe</a>
+      <a href='calculator' target=''>Calculator</a>
+      <a href='todolist' target=''>Todo List</a>
+    </head>
   );
 }
 

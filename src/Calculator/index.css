@@ -1,0 +1,27 @@
+
+.calculator {
+    background-color: rgb(58, 57, 57);
+    width: fit-content;
+    border-radius: 10%;
+    padding: 20px;
+}
+.display {
+    border-radius: 10px;
+    display: block;
+    overflow: auto;
+    width: 250px;
+    height: 50px;
+    font-size: 40px;
+    background-color: white;
+}
+.key {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: lightpink;
+    width: 60px;
+    height: 60px;
+
+    clip-path: circle();
+    border: none;
+    cursor: pointer;
+}
